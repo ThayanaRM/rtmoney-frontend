@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-md navbar-dark main-nav">
+  <div class="container-fluid">
+    <a routerLink="/home" class="nav-logo-text">
+      <h4>Lançamentos</h4>
+    </a>
+    <button class="navbar-toggler" type="button" (click)="showMenu = !showMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse" [hidden]="!showMenu">
+      <ul class="navbar-nav offset-md-2 main-menu">
+        <li class="mr-2">
+          <a routerLink="/home" routerLinkActive="active">
+            <fa-icon icon="home" class="mr-2"></fa-icon>
+            HOME
+          </a>
+        </li>
+        <!-- <li>
+          <a routerLink="auth/login" routerLinkActive="active">
+            <fa-icon icon="user-friends" class="mr-2"></fa-icon>
+            PERSONAGENS
+          </a>
+        </li>
+        <li>
+          <a routerLink="/admin/characters/list" routerLinkActive="active">
+            <fa-icon icon="tools" class="mr-2"></fa-icon>
+            ADMIN
+          </a>
+        </li> -->
+      </ul>
+    </div>
+    <!--<div class="nav-login-logout">
+      <fa-icon icon="user" class="mr-2"></fa-icon>
+      <span>{{ userLoggedIn }}</span>
+      <a routerLink="auth/login"> // LOGOUT </a>
+    </div>-->
+  </div>
+</nav>
