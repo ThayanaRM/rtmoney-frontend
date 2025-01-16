@@ -12,7 +12,8 @@ import {
   faSignInAlt,
   faUser,
   faUserFriends,
-  faTools
+  faTools,
+  faTag
 } from '@fortawesome/free-solid-svg-icons';
 @NgModule({
   exports: [FontAwesomeModule],
@@ -29,7 +30,8 @@ export class IconsModule {
       faSignInAlt,
       faUser,
       faUserFriends,
-      faTools
+      faTools,
+      faTag
     );
   }
 }
