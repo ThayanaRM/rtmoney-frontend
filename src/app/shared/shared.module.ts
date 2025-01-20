@@ -4,6 +4,7 @@ import { IconsModule } from './icons/icons.module';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   ],
   imports: [
     CommonModule,
-    IconsModule
+    IconsModule,
+    RouterModule
   ],
   exports: [
     NavbarComponent,
