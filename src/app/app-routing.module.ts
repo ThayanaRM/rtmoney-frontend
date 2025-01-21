@@ -1,7 +1,6 @@
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from "@angular/core";
 
-
 const routes: Routes = [
   {
     path: 'home',
@@ -12,7 +11,18 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  }
+  },
+
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('../app/users/users.module').then((m) => m.UsersModule)
+  },
+  {
+    path: '',
+    redirectTo: 'users',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({
