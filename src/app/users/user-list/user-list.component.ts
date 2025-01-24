@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Table } from 'primeng/table';
+import { UserService } from '../user.service';
+import { User } from 'src/app/core/models/User';
 
 @Component({
   selector: 'app-user-list',
@@ -8,34 +10,20 @@ import { Table } from 'primeng/table';
 })
 export class UserListComponent implements OnInit {
 
-  @ViewChild('userTable') grid!: Table;
+  users: User[] = []
 
-  users = [
-    {
-      name: 'Axl Fernandez',
-      email: 'axl@email.com',
-      role: 'ROLE_ADMIN',
-    },
-    {
-      name: 'Rose Oliveira',
-      email: 'rose@email.com',
-      role: 'ROLE_ANALYST',
-    },
-    {
-      name: 'Flávia Durval',
-      email: 'flavia@email.com',
-      role: 'ROLE_ADMIN',
-    },
-    {
-      name: 'Luciano Santos',
-      email: 'luciano@email.com',
-      role: 'ROLE_ANALYST',
-    },
-  ];
-
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.list();
   }
 
+  list(): void {
+    this.userService
+    .list()
+      .subscribe((data) => {
+        this.users = data.content;
+        console.log('UserListComponent - Usuários carregados:', this.users);
+      });
+  }
 }

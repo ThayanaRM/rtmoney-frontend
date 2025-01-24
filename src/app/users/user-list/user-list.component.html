@@ -21,8 +21,10 @@
               {{ user.email }}
             </td>
             <td class="columns">
-              <span class="p-column-title">Permissão:</span>
-              {{ user.role }}
+              <span class="p-column-title">Permissões:</span>
+              <div  *ngFor="let role of user.roles; index as i">
+                {{ role.authority }}
+              </div>
             </td>
           </tr>
         </ng-template>
