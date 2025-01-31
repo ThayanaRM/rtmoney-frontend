@@ -1,7 +1,15 @@
 <div class="user-card">
   <div class="grid">
     <div class="col-12">
-      <p-table [value]="users">
+      <p-table [value]="users"
+        [responsive]="true"
+        [paginator]="true"
+        [rows]="pagination.linesPerPage"
+        [lazy]="true"
+        [totalRecords]="totalElements"
+        (onLazyLoad)="changePage($event)"
+        #userTable
+        >
         <ng-template pTemplate="header">
           <tr>
             <th>Nome</th>

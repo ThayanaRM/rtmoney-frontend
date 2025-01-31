@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Table } from 'primeng/table';
 import { UserService } from '../user.service';
 import { User } from 'src/app/core/models/User';
+import { Pagination } from 'src/app/core/models/Pagination';
+import { LazyLoadEvent } from 'primeng/api';
 
 @Component({
   selector: 'app-user-list',
@@ -12,18 +13,30 @@ export class UserListComponent implements OnInit {
 
   users: User[] = []
 
-  constructor(private userService: UserService) { }
+  pagination: Pagination = new Pagination();
+
+  totalElements: number = 0;
+
+  constructor(private userService: UserService) {
+    this.pagination.linesPerPage = 3;
+   }
 
   ngOnInit(): void {
-    this.list();
   }
 
-  list(): void {
+  list(page: number = 0): void {
+    this.pagination.page = page;
+
     this.userService
-    .list()
+    .list(this.pagination)
       .subscribe((data) => {
         this.users = data.content;
-        console.log('UserListComponent - Usuários carregados:', this.users);
+        this.totalElements = data.totalElements;
       });
+  }
+
+  changePage(event: LazyLoadEvent){
+    const page = event!.first! / event!.rows!;
+    this.list(page);
   }
 }
