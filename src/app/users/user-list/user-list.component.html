@@ -1,0 +1,42 @@
+<div class="user-card">
+  <div class="grid">
+    <div class="col-12">
+      <p-table [value]="users"
+        [responsive]="true"
+        [paginator]="true"
+        [rows]="pagination.linesPerPage"
+        [lazy]="true"
+        [totalRecords]="totalElements"
+        (onLazyLoad)="changePage($event)"
+        #userTable
+        >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Permissão</th>
+            <th class="actions"></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+          <tr>
+            <td class="columns">
+              <span class="p-column-title">Nome:</span>
+              {{ user.name }}
+            </td>
+            <td class="columns">
+              <span class="p-column-title">E-mail:</span>
+              {{ user.email }}
+            </td>
+            <td class="columns">
+              <span class="p-column-title">Permissões:</span>
+              <div  *ngFor="let role of user.roles; index as i">
+                {{ role.authority }}
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-container {
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+      flex-direction: row;
+  }
+
+  .page-container {
+      flex: 1;
+  }
+}
