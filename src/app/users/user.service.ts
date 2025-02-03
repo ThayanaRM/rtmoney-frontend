@@ -12,12 +12,15 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  list(pagination: Pagination): Observable<any> {
+  list(pagination: Pagination, filterName: string): Observable<any> {
     let params = new HttpParams()
+    .set('name', filterName)
     .set('page', pagination.page)
     .set('linesPerPage', pagination.linesPerPage)
     .set('direction', String(pagination.direction))
     .set('orderBy', String(pagination.orderBy));
+
+    console.log("Chamando API com filtros:", params.toString());
 
     return this.http.get<any>(AppConstants.backendServer + 'users', { params });
   }

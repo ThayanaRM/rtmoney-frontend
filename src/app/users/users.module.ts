@@ -9,6 +9,8 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserService } from './user.service';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { SharedModule } from '../shared/shared.module';
 
   TableModule,
   FormsModule,
+  ButtonModule,
+  InputTextModule,
 
   UsersRoutingModule
   ],

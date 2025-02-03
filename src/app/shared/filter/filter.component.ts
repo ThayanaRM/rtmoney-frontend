@@ -21,9 +21,9 @@ export class FilterComponent implements OnInit {
     this.search.emit(this.nameFilter);
   }
 
-  // formClear(){
-  //   this.nameFilter = '';
-  //   this.searchName();
-  // }
+  formClear(){
+     this.nameFilter = '';
+     this.searchName();
+  }
 
 }

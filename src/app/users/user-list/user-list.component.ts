@@ -17,6 +17,8 @@ export class UserListComponent implements OnInit {
 
   totalElements: number = 0;
 
+  filterName: string = '';
+
   constructor(private userService: UserService) {
     this.pagination.linesPerPage = 3;
    }
@@ -28,7 +30,7 @@ export class UserListComponent implements OnInit {
     this.pagination.page = page;
 
     this.userService
-    .list(this.pagination)
+    .list(this.pagination, this.filterName)
       .subscribe((data) => {
         this.users = data.content;
         this.totalElements = data.totalElements;
@@ -38,5 +40,11 @@ export class UserListComponent implements OnInit {
   changePage(event: LazyLoadEvent){
     const page = event!.first! / event!.rows!;
     this.list(page);
+  }
+
+  searchUser(name: string) {
+    console.log("Filtro recebido no UserListComponent: " + name);
+    this.filterName = name;
+    this.list();
   }
 }
