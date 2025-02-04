@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { LazyLoadEvent } from 'primeng/api';
+import { Table } from 'primeng/table';
+
 import { UserService } from '../user.service';
 import { User } from 'src/app/core/models/User';
 import { Pagination } from 'src/app/core/models/Pagination';
-import { LazyLoadEvent } from 'primeng/api';
 
 @Component({
   selector: 'app-user-list',
@@ -18,6 +21,8 @@ export class UserListComponent implements OnInit {
   totalElements: number = 0;
 
   filterName: string = '';
+
+  @ViewChild('userTable') grid!: Table;
 
   constructor(private userService: UserService) {
     this.pagination.linesPerPage = 3;

@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { UsersComponent } from './users.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 
 const routes: Routes = [
@@ -12,6 +14,10 @@ const routes: Routes = [
   {
     path: 'list',
     component: UserListComponent,
+  },
+  {
+    path: 'create',
+    component: UserFormComponent,
   },
 ];
 
