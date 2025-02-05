@@ -1,6 +1,6 @@
 <div class="user-form-container">
   <div class="user-card">
-    <form #userForm="ngForm">
+    <form #userForm="ngForm" (ngSubmit)="save(userForm)">
       <div class="col-12">
         <h1>Dados do Usuário</h1>
       </div>
@@ -13,17 +13,34 @@
               placeholder="Nome"
               type="text"
               name="name"
+              [(ngModel)]="user.name"
+              #name="ngModel"
+              required="true"
+              minlength="5"
               class="form-control"
             />
           </div>
+          <app-message
+            [control]="name"
+            error="required"
+            text="Informe o nome completo do usuário"
+          ></app-message>
+          <app-message
+            [control]="name"
+            error="minlength"
+            text="Mínimo de {{ name.errors?.['minlength']?.requiredLength }} caracteres. Você digitou apenas {{ name.errors?.['minlength']?.actualLength }}"
+          >
+          </app-message>
 
           <div class="mt-3 mb-3">
             <p-multiSelect
               [options]="roles"
               optionLabel="authority"
-              optionValue="id"
-              placeholder="Selecione"
-              name="role"
+              placeholder="Papéis"
+              name="roles"
+              [(ngModel)]="select"
+              #role
+              [required]="true"
               styleClass="form-control"
             ></p-multiSelect>
           </div>
@@ -35,9 +52,18 @@
               placeholder="E-mail"
               type="email"
               name="email"
+              [(ngModel)]="user.email"
+              #email="ngModel"
+              [required]="true"
               class="form-control"
             />
           </div>
+
+          <app-message
+            [control]="email"
+            error="required"
+            text="Informe o E-mail do usuário"
+          ></app-message>
 
           <div class="mt-3">
             <input
@@ -45,9 +71,18 @@
               placeholder="Senha"
               type="password"
               name="password"
+              [(ngModel)]="user.password"
+              #password="ngModel"
+              [required]="true"
               class="form-control"
             />
           </div>
+
+          <app-message
+            [control]="password"
+            error="required"
+            text="Informe a senha do usuário"
+          ></app-message>
         </div>
       </div>
 
@@ -60,12 +95,14 @@
           SALVAR
         </button>
 
+        <a routerLink="/users/list">
           <button
             type="button"
             class="btn btn-outline-danger user-form-button ml-3"
           >
             CANCELAR
           </button>
+        </a>
       </div>
     </form>
   </div>
