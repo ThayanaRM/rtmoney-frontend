@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     NavbarComponent,
     SidebarComponent,
-    FilterComponent
+    FilterComponent,
 
   ],
   imports: [
@@ -26,7 +26,7 @@ import { FormsModule } from '@angular/forms';
   exports: [
     NavbarComponent,
     SidebarComponent,
-    FilterComponent
+    FilterComponent,
   ]
 })
 export class SharedModule { }

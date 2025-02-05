@@ -12,6 +12,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ButtonModule } from 'primeng/button';
   FormsModule,
   ButtonModule,
   InputTextModule,
+  MultiSelectModule,
 
   UsersRoutingModule
   ],
