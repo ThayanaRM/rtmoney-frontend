@@ -19,6 +19,11 @@ const routes: Routes = [
     path: 'create',
     component: UserFormComponent,
   },
+  {
+    path: ':userId',
+    component: UserFormComponent,
+    data: { roles: ['ROLE_ADMIN']}
+  },
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Role } from 'src/app/core/models/Role';
 import { User } from 'src/app/core/models/User';
@@ -29,19 +29,32 @@ export class UserFormComponent implements OnInit {
     private userService: UserService,
     private messageService: MessageService,
     private router: Router,
+    private route: ActivatedRoute,
     private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('userId');
+    if(id !=null){
+      this.userService.findById(id).subscribe(data => {
+        this.user = data;
+        this.user.roles = [];
+      })
+    }
   }
 
   save(form: NgForm){
-    console.log(form.value);
+    console.log('1º',form.value);
     this.user.roles = form.value.roles;
-    this.insert();
+    if (this.user.id && this.user.id.toString().trim() !== '') {
+      this.update();
+    }else{
+      this.insert();
+    }
   }
 
   insert() {
+    console.log('2º', this.user)
     this.userService.insert(this.user).subscribe(
       () => {
         this.router.navigate(['/users/list']);
@@ -49,5 +62,14 @@ export class UserFormComponent implements OnInit {
       },
       (error) => this.errorHandler.handle(error));
 
+  }
+
+  update() {
+    this.userService.update(this.user).subscribe(
+      () => {
+        this.router.navigate(['/users/list']);
+        this.messageService.add({ severity: 'success', detail: 'Usuário atualizado com sucesso!' });
+      },
+      (error) => this.errorHandler.handle(error));
   }
 }
