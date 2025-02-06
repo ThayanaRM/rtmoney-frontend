@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MessageService } from 'primeng/api';
     SharedModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ToastModule,
 
     AppRoutingModule
   ],
