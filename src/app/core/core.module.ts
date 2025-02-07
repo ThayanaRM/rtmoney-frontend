@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -15,6 +15,7 @@ import { ConfirmationService } from 'primeng/api';
     ConfirmDialogModule
   ],
   providers: [
+    MessageService,
     ConfirmationService
   ]
 })

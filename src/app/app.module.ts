@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 
-import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { CoreModule } from './core/core.module';
 
@@ -25,7 +24,7 @@ import { CoreModule } from './core/core.module';
 
     AppRoutingModule
   ],
-  providers: [MessageService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
