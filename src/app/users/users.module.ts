@@ -32,6 +32,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
 
   UsersRoutingModule
   ],
-  providers: [UserService],
+  providers: [
+    UserService
+  ],
 })
 export class UsersModule { }

@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ToastModule } from 'primeng/toast';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastModule,
+    CoreModule,
 
     AppRoutingModule
   ],

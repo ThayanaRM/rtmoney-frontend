@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { LazyLoadEvent } from 'primeng/api';
+import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 
 import { UserService } from '../user.service';
 import { User } from 'src/app/core/models/User';
 import { Pagination } from 'src/app/core/models/Pagination';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
 @Component({
   selector: 'app-user-list',
@@ -24,7 +25,12 @@ export class UserListComponent implements OnInit {
 
   @ViewChild('userTable') grid!: Table;
 
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+    private messageService: MessageService,
+    private errorHandler: ErrorHandlerService,
+    private confirmationService: ConfirmationService
+  ) {
     this.pagination.linesPerPage = 3;
    }
 
@@ -51,5 +57,23 @@ export class UserListComponent implements OnInit {
     console.log("Filtro recebido no UserListComponent: " + name);
     this.filterName = name;
     this.list();
+  }
+
+  delete(user: any) {
+    this.confirmationService.confirm({
+      message: 'Tem certeza que deseja excluir?',
+      accept: () => {
+        this.userService.delete(user.id).subscribe(
+          () => {
+            this.grid.reset();
+            this.messageService.add({
+              severity: 'success',
+              detail: 'Usuário excluído com sucesso!',
+            });
+          },
+          (error) => this.errorHandler.handle(error)
+        );
+      },
+    });
   }
 }
