@@ -22,7 +22,7 @@ import { CoreModule } from './core/core.module';
     ToastModule,
     CoreModule,
 
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
