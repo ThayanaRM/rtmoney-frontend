@@ -12,11 +12,28 @@
   padding: 10px;
 }
 
+
+
+.home-image-container img{
+  width: 50%;
+  height: 50%;
+  margin-bottom: 20px;
+}
+
 .home-content-container h1{
   margin-top: 50px;
   margin-bottom: 50px;
   color: blue;
   font-size: 20px;
+}
+
+.home-button {
+  height: 50px;
+  width: 200px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-bottom: 30px;
 }
 
 @media (min-width: 576px) {
@@ -33,12 +50,26 @@
       margin-bottom: 20px;
       font-size: 30px;
     }
+
+    .home-button {
+      margin-bottom: 20px;
+    }
+
+    .home-image-container img{
+      width: 50%;
+      height: 300px;
+      margin-bottom: 20px;
+    }
 }
 
 @media (min-width: 1400px) {
   .home-content-container h1{
       font-size: 50px;
       margin-bottom: 40px;
+    }
+
+    .home-image-container img{
+      height: 500px;
     }
 
     .home-container {
