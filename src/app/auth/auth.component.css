@@ -1,16 +1,18 @@
-
 .auth-container {
   display: flex;
-  justify-content: space-around;
+  align-items: center; /* Centraliza os elementos verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  height: 100vh; /* Ocupa toda a altura da tela */
   padding: 20px;
 }
 
-.auth-image-container {
-  display: none;
-}
-
 .auth-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  max-width: 500px; /* Definição de um tamanho fixo */
+  height: auto;
 }
 
 @media (min-width: 576px) {
@@ -21,7 +23,11 @@
 
 @media (min-width: 768px) {
   .auth-form-container {
-    width: 550px;
+    /* width: 550px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Garante que o card fique centralizado na altura da tela */
   }
 }
 
@@ -67,4 +73,3 @@
     font-size: 24px;
   }
 }
-

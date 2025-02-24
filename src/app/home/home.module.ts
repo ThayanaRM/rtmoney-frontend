@@ -6,7 +6,7 @@ import { HomeComponent } from './home.component';
 import { LoginComponent } from '../auth/login/login.component';
 
 @NgModule({
-  declarations: [HomeComponent, LoginComponent],
+  declarations: [HomeComponent],
   imports: [CommonModule, RouterModule, HomeRoutingModule],
 })
 export class HomeModule {}
