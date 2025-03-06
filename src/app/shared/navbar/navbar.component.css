@@ -36,6 +36,36 @@
 }
 
 
+.nav-login-logout {
+  display: none;
+  margin-left: 20px;
+  color: #fff
+}
+
+
+.nav-login-logout a {
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+}
+
+.nav-login-logout a.active {
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-login-logout a:hover {
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .nav-login-logout {
+    display: unset;
+    margin-right: 15px;
+    text-decoration: none;
+  }
+}
+
 @media (min-width: 992px) {
   .nav-login-logout {
     margin-right: 40px;

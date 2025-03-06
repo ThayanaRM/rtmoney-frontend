@@ -16,5 +16,15 @@
         </li>
       </ul>
     </div>
+    <div class="nav-login-logout">
+      <fa-icon icon="user" class="mr-2"></fa-icon>
+      <span
+        >{{ userLoggedIn }}
+        <a *ngIf="userLoggedIn" href="javascript:;" (click)="logout()">
+          - LOGOUT
+        </a>
+        <a *ngIf="!userLoggedIn" routerLink="auth/login"> LOGIN </a>
+      </span>
+    </div>
   </div>
 </nav>

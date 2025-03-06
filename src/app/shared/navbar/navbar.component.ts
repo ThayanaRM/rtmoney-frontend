@@ -1,20 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
 
   showMenu: boolean = false;
+  userLoggedIn: string = this.authService.decodedToken?.user_name;
 
-  constructor(
-    private router: Router
-  ) { }
-
-  ngOnInit(): void {
+  constructor(private authService: AuthService, private router: Router) {
+    AuthService.emitiLogin.subscribe((data) => {
+      this.userLoggedIn = data;
+    });
+    AuthService.emitiLogout.subscribe((data) => {
+      this.userLoggedIn = data;
+    });
   }
 
+  ngOnInit(): void {}
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['/auth/login']);
+  }
+
+  haveRole(role: string){
+    return this.authService.haveRole(role);
+  }
 }

@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { ToastModule } from 'primeng/toast';
 import { CoreModule } from './core/core.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
     ToastModule,
     CoreModule,
+    AuthModule,
 
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
