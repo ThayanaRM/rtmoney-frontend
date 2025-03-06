@@ -16,15 +16,17 @@ export class NavbarComponent implements OnInit {
     AuthService.emitiLogin.subscribe((data) => {
       this.userLoggedIn = data;
     });
-
+    AuthService.emitiLogout.subscribe((data) => {
+      this.userLoggedIn = data;
+    });
   }
 
-  // logout(){
-  //   this.authService.logout();
-  //   this.router.navigate(['/auth/login']);
-  // }
-
   ngOnInit(): void {}
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['/auth/login']);
+  }
 
   haveRole(role: string){
     return this.authService.haveRole(role);
