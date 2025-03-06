@@ -20,6 +20,9 @@
       <fa-icon icon="user" class="mr-2"></fa-icon>
       <span
         >{{ userLoggedIn }}
+        <a *ngIf="userLoggedIn" href="javascript:;">
+          - LOGOUT
+        </a>
         <a *ngIf="!userLoggedIn" routerLink="auth/login"> LOGIN </a>
       </span>
     </div>

@@ -62,6 +62,12 @@ export class AuthService {
       }
     }
 
+    // logout() {
+    //   localStorage.removeItem('token');
+    //   this.decodedToken = '';
+    //   AuthService.emitiLogout.emit(this.decodedToken?.user_name);
+    // }
+
     haveRole(permissao: string) {
       return this.decodedToken && this.decodedToken.authorities.includes(permissao);
     }
