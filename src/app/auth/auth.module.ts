@@ -1,6 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { SharedModule } from 'primeng/api';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AuthComponent } from './auth.component';
@@ -19,7 +18,6 @@ export function tokenGetter(): string {
   imports: [
     CommonModule,
     FormsModule,
-    // RouterModule,
     SharedModule,
     JwtModule.forRoot({
       config: {
