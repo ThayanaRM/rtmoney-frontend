@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { TableModule } from 'primeng/table';
     RouterModule,
     SharedModule,
     TableModule,
+    ButtonModule,
+    TooltipModule,
     CategoryRoutingModule
   ]
 })

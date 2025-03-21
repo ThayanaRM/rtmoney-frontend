@@ -1,15 +1,15 @@
-<div class="user-filter-container">
-  <a routerLink="/users/create">
+<div class="category-filter-container">
+  <a routerLink="/admin/categories/create">
     <button class="btn btn-primary text-white btn-crud-new">
       NOVA CATEGORIA
     </button>
   </a>
   <app-filter
-    text="Digite o nome da categoria">
-  </app-filter>
+    text="Digite o nome da categoria"
+    (search)="searchCategory($event)"
+  ></app-filter>
 </div>
-
-<div class="user-card">
+<div class="category-card">
   <div class="grid">
     <div class="col-12">
       <p-table
@@ -19,25 +19,29 @@
         [rows]="pagination.linesPerPage"
         [lazy]="true"
         [totalRecords]="totalElements"
+        (onLazyLoad)="changePage($event)"
+        #categoryTable
       >
         <ng-template pTemplate="header">
           <tr>
-            <th>Categorias</th>
+            <th>Nome</th>
             <th class="actions"></th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-categories>
+        <ng-template pTemplate="body" let-category>
           <tr>
             <td class="columns">
               <span class="p-column-title">Nome:</span>
-              {{ categories.name }}
+              {{ category.name }}
             </td>
+
             <td class="col-actions">
               <a
                 pButton
                 icon="pi pi-pencil"
                 pTooltip="Editar"
                 tooltipPosition="top"
+                [routerLink]="['/admin/categories', category.id]"
               ></a>
               <button
                 pButton
