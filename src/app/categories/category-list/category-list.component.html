@@ -1,1 +1,54 @@
-<p>category-list works!</p>
+<div class="user-filter-container">
+  <a routerLink="/users/create">
+    <button class="btn btn-primary text-white btn-crud-new">
+      NOVA CATEGORIA
+    </button>
+  </a>
+  <app-filter
+    text="Digite o nome da categoria">
+  </app-filter>
+</div>
+
+<div class="user-card">
+  <div class="grid">
+    <div class="col-12">
+      <p-table
+        [value]="categories"
+        [responsive]="true"
+        [paginator]="true"
+        [rows]="pagination.linesPerPage"
+        [lazy]="true"
+        [totalRecords]="totalElements"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Categorias</th>
+            <th class="actions"></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-categories>
+          <tr>
+            <td class="columns">
+              <span class="p-column-title">Nome:</span>
+              {{ categories.name }}
+            </td>
+            <td class="col-actions">
+              <a
+                pButton
+                icon="pi pi-pencil"
+                pTooltip="Editar"
+                tooltipPosition="top"
+              ></a>
+              <button
+                pButton
+                icon="pi pi-trash"
+                pTooltip="Excluir"
+                tooltipPosition="top"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

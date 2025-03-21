@@ -6,6 +6,8 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+import { TableModule } from 'primeng/table';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule,
     RouterModule,
+    SharedModule,
+    TableModule,
     CategoryRoutingModule
   ]
 })
