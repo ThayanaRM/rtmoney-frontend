@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MessageService } from 'primeng/api';
 
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Category } from 'src/app/core/models/Category';
 import { CategoryService } from '../category.service';
@@ -20,15 +20,29 @@ export class CategoryFormComponent implements OnInit {
     private categoryService: CategoryService,
         private messageService: MessageService,
         private router: Router,
+        private route: ActivatedRoute,
         private errorHandler: ErrorHandlerService
   ) { }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('categoryId');
+
+     if(id !=null){
+       this.categoryService.findById(id).subscribe(data => {
+         console.log(data);
+         this.category = data;
+       })
+     }
   }
 
     save(){
-      console.log('Salvando a categoria');
+      if (this.category.id != null && this.category.id.toString().trim() != null) {
+        this.update();
+        console.log('Atualizando a categoria');
+      }else{
+        console.log('Salvando a categoria');
         this.insert();
+      }
     }
 
     insert() {
@@ -40,5 +54,12 @@ export class CategoryFormComponent implements OnInit {
         },
         (error) => this.errorHandler.handle(error));
 
+    }
+
+    update(){
+      this.categoryService.update(this.category).subscribe(data => {
+        this.router.navigate(['/categories/list']);
+        this.messageService.add({ severity: 'success', detail: 'Categoria editada com sucesso!' });
+      }, error => this.errorHandler.handle(error));
     }
 }

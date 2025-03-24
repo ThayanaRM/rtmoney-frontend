@@ -28,4 +28,12 @@ export class CategoryService {
   insert(category: Category) : Observable<any> {
     return this.http.post<any>(AppConstants.backendServer + 'categories', category);
   }
+
+  findById(id: any): Observable<any> {
+    return this.http.get<any>(AppConstants.backendServer + 'categories/' + id);
+  }
+
+  update(category: Category) : Observable<any> {
+    return this.http.put<any>(AppConstants.backendServer + 'categories/' + category.id, category);
+  }
 }

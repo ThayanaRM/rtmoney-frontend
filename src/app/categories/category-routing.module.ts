@@ -6,6 +6,11 @@ import { CategoryFormComponent } from './category-form/category-form.component';
 const routes: Routes = [
   { path: 'list', component: CategoryListComponent },
   { path: 'create', component: CategoryFormComponent },
+
+  {
+    path: ':categoryId',
+    component: CategoryFormComponent
+  },
 ];
 
 @NgModule({
