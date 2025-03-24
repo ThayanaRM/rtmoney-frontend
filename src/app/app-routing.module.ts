@@ -36,6 +36,10 @@ const routes: Routes = [
     component: NotAuthorizedComponent
    },
    {
+    path: 'categories',
+    loadChildren: () => import('./categories/categories.module').then(m => m.CategoryModule)
+  },
+   {
     path: 'page-not-found',
     component: PageNotFoundComponent
    },

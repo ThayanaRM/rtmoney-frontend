@@ -17,7 +17,7 @@ export class FilterComponent implements OnInit {
   }
 
   searchName(){
-    console.log("Filtro de pesquisa: " + this.nameFilter);
+    console.log("[01 - FilterComponent] Filtro de pesquisa: " + this.nameFilter);
     this.search.emit(this.nameFilter);
   }
 
