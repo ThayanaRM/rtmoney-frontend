@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { LazyLoadEvent} from 'primeng/api';
+
 import { Table } from 'primeng/table';
 import { Category } from 'src/app/core/models/Category';
 import { Pagination } from 'src/app/core/models/Pagination';
 import { CategoryService } from '../category.service';
-import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
-import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
 @Component({
   selector: 'app-category-list',
@@ -24,10 +25,7 @@ export class CategoryListComponent implements OnInit {
     @ViewChild('categoryTable') grid!: Table;
 
   constructor(
-    private categoryService: CategoryService,
-    private messageService: MessageService,
-    private errorHandler: ErrorHandlerService,
-    private confirmationService: ConfirmationService,
+    private categoryService: CategoryService
   ) {
     this.pagination.linesPerPage = 3;
    }
@@ -52,6 +50,7 @@ export class CategoryListComponent implements OnInit {
   }
 
   searchCategory(name: string) {
+    console.log("[02 - CategoryListComponent] Filtro recebido no CategoryListComponent: " + name);
     this.filterName = name;
     this.list();
   }

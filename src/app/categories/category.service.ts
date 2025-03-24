@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs';
 import { AppConstants } from '../app-constants';
 import { Pagination } from '../core/models/Pagination';
@@ -18,6 +19,8 @@ export class CategoryService {
     .set('linesPerPage', String(pagination.linesPerPage))
     .set('direction', String(pagination.direction))
     .set('orderBy', String(pagination.orderBy));
+
+    console.log('[03 - CategoryService] Params usados:', params.toString());
 
     return this.http.get<any>(AppConstants.backendServer + 'categories', { params });
   }
