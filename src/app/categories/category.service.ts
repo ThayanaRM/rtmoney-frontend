@@ -36,4 +36,8 @@ export class CategoryService {
   update(category: Category) : Observable<any> {
     return this.http.put<any>(AppConstants.backendServer + 'categories/' + category.id, category);
   }
+
+  delete(id: Number): Observable<any> {
+    return this.http.delete(AppConstants.backendServer + 'categories/' + id);
+  }
 }
