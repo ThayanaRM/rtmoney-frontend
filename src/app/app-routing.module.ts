@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'categories',
     loadChildren: () => import('./categories/categories.module').then(m => m.CategoryModule)
   },
+  {
+    path: 'products',
+    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+  },
    {
     path: 'page-not-found',
     component: PageNotFoundComponent

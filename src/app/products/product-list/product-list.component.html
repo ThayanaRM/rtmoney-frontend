@@ -1,1 +1,57 @@
-<p>product-list works!</p>
+<div class="container">
+  <div class="character-filter-container">
+    <a routerLink="/characters/create">
+      <button class="btn btn-primary text-white btn-crud-new">
+        NOVO PERSONAGEM
+      </button>
+    </a>
+
+    <!-- Campo de filtro visual -->
+    <div class="app-filter">
+      <input type="text" placeholder="Digite o nome do personagem" />
+    </div>
+  </div>
+
+  <div class="character-card">
+    <div class="grid">
+      <div class="col-12">
+        <table class="p-table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Categoria</th>
+              <th>Idade</th>
+              <th>Residência</th>
+              <th>Classificação</th>
+              <th class="actions"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="columns">
+                <span class="p-column-title">Nome:</span>
+              </td>
+              <td class="columns">
+                <span class="p-column-title">Categoria:</span>
+              </td>
+              <td class="columns">
+                <span class="p-column-title">Idade:</span>
+              </td>
+              <td class="columns">
+                <span class="p-column-title">Residência:</span>
+              </td>
+              <td class="col-actions">
+                <a class="p-button p-button-icon-only">
+                  <i class="pi pi-pencil"></i>
+                </a>
+                <button class="p-button p-button-icon-only">
+                  <i class="pi pi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
