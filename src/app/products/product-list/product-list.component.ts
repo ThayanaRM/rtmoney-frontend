@@ -46,4 +46,9 @@ export class ProductListComponent implements OnInit {
     this.list(page);
   }
 
+  search(name: string) {
+    this.filterName = name;
+    this.list();
+  }
+
 }
