@@ -1,56 +1,68 @@
 <div class="container">
-  <div class="character-filter-container">
-    <a routerLink="/characters/create">
+  <div class="product-filter-container">
       <button class="btn btn-primary text-white btn-crud-new">
-        NOVO PERSONAGEM
+        NOVO PRODUTO
       </button>
-    </a>
-
-    <!-- Campo de filtro visual -->
-    <div class="app-filter">
-      <input type="text" placeholder="Digite o nome do personagem" />
-    </div>
+    <app-filter
+      text="Digite o nome do produto"
+    ></app-filter>
   </div>
-
-  <div class="character-card">
+  <div class="product-card">
     <div class="grid">
       <div class="col-12">
-        <table class="p-table">
-          <thead>
+        <p-table
+          [value]="products"
+          [responsive]="true"
+          [paginator]="true"
+          [rows]="pagination.linesPerPage"
+          [lazy]="true"
+          [totalRecords]="totalElements"
+          (onLazyLoad)="changePage($event)"
+          #productTable
+        >
+          <ng-template pTemplate="header">
             <tr>
               <th>Nome</th>
+              <th>Preço</th>
               <th>Categoria</th>
-              <th>Idade</th>
-              <th>Residência</th>
-              <th>Classificação</th>
               <th class="actions"></th>
             </tr>
-          </thead>
-          <tbody>
+          </ng-template>
+          <ng-template pTemplate="body" let-product>
             <tr>
               <td class="columns">
                 <span class="p-column-title">Nome:</span>
+                {{ product.name }}
               </td>
+
+              <td class="columns">
+                <span class="p-column-title">Preço:</span>
+                {{ product.price | currency:'BRL':'symbol':'1.2-2' }}
+              </td>
+
               <td class="columns">
                 <span class="p-column-title">Categoria:</span>
-              </td>
-              <td class="columns">
-                <span class="p-column-title">Idade:</span>
-              </td>
-              <td class="columns">
-                <span class="p-column-title">Residência:</span>
+                <div *ngFor="let category of product.categories">
+                  {{ category.name }}
+                </div>
               </td>
               <td class="col-actions">
-                <a class="p-button p-button-icon-only">
-                  <i class="pi pi-pencil"></i>
-                </a>
-                <button class="p-button p-button-icon-only">
-                  <i class="pi pi-trash"></i>
-                </button>
+                <a
+                  pButton
+                  icon="pi pi-pencil"
+                  pTooltip="Editar"
+                  tooltipPosition="top"
+                ></a>
+                <button
+                  pButton
+                  icon="pi pi-trash"
+                  pTooltip="Excluir"
+                  tooltipPosition="top"
+                ></button>
               </td>
             </tr>
-          </tbody>
-        </table>
+          </ng-template>
+        </p-table>
       </div>
     </div>
   </div>
